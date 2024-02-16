@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--React Library-->
+     <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+     <!--React DOM Library-->
+     <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+     <!--Babel Library-->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script> 
+    <title>React Components</title>
+</head>
+<body>
+    <div><b>Functional Stateless Components: </b>
+       <ul>
+           <li>
+                It has no state management
+           </li>
+           <li>
+                Easier to Read
+            </li>
+            <li>
+                Easier to Write
+            </li>
+            <li>
+                Better Performance
+            </li>
+            <li>
+                No need to use "this" keyword
+            </li>
+       </ul> 
+       <p> If a component doesnot need a state then this is your go to component.</p>
+       <p><b>Best Practice is to aim to use stateless components as much as you can.</b></p>
+    </div>
+    <div id="app">React has not rendered yet</div>
+    <div id="app1">React has not rendered yet</div>
+    <script type="text/babel">
+        //OUR FIRST STATELESS FUNCTIONAL COMPONENT
+        //COMPONENT IS CAPITALIZED
+        //ONE RETURN STATEMENT
+        var ColorSpecturm=function(){
+            return (
+                <h1>Red, Orange, Yellow, Green, Blue, Indigo, Violet</h1>
+            );
+        }
+        var Red=function(){
+            return(<h1>Red</h1>);
+        }
+        var Orange=function(){
+            return(<h1>Orange</h1>);
+        }
+        ReactDOM.render(
+            //Render What,//Render Where
+            <ColorSpecturm/>,
+            document.getElementById("app")
+        )
+        ReactDOM.render(
+            //Render What,//Render Where
+            <div><Red/><Orange/></div>,
+            document.getElementById("app1")
+        )
+    </script>
+</body>
+</html>

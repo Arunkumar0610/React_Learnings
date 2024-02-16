@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--React Library-->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!--React DOM Library-->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!--Babel Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>Iterating Through Lists</title>
+</head>
+<body>
+    <h1>Iterating Through Lists Part I</h1>
+    <p> When you render a list of items, React always stores some info about each item 
+        in the list. If you render a component that has state, that state needs to be stored
+        and regardless of how you implement your components, React stores a reference to the 
+        backing natives views. When you update that list, React need to determine what has changed.
+    </p>
+    <p>
+        You could've added, remved, rearranged, or updated items in the list. "Key" is a 
+        special property that's reserved by React. When an element is created, React pulls off the 
+        key property and stores the key directly on the returned element. Even though it may look like 
+        it is part of props, it cannot be referenced with "this.props.key".
+    </p>
+    <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT-->
+    <div id="app">React has not rendered yet</div>
+    <!--JAVASCRIPT-->
+    <script type="text/babel">
+
+        // CREATE FAMILYLIST COMPONENT
+        function FamilyList(props)
+        {
+            //assign props.siblings to siblings variablr to clean up code (optional)
+            var siblings=props.siblings;
+            //use filter method to only show female siblings
+            //var siblings=siblings.filter(function(person){return person.female;})
+            //use map method on siblings array to create new array full of JSX code
+            //Method Chaining
+            var siblingsListItem=siblings.filter(function(person){return person.female;}).map(function(person){
+                return <div key={person.id}>{person.name}</div>
+            })
+            return(
+                <div>{siblingsListItem}</div>
+            );
+        }
+        //Alternative FamilyList Component Creation
+        // function FamilyList(props)
+        // {
+        //     return(
+        //         <div>
+        //             {props.siblings.filter(function(person){return person.female;}).map(function(person){return <div key={person.id}>{person.name}</div>})}
+        //         </div>
+        //     )
+        // }
+        //ARRAY OF OBJECTS -3 PROPS(ID, NAME AND FEMALE) 3 VALUES (NUMBER, STRING, BOOLEAN)
+        var siblings=[{id:1,name:'Chris',female:false},{id:2,name:'Jeff',female:false},
+        {id:3,name:'Julie',female:true},{id:4,name:'Jessica',female:true}]
+        ReactDOM.render(
+
+            <FamilyList siblings={siblings}/>,
+            document.getElementById("app")
+        );
+    </script>
+</body>
+</html>

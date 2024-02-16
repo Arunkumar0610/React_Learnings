@@ -1,0 +1,56 @@
+<!-- Babel will used to convert from Es6(ECMAScript 2015 or 6) to Es5(ECMAScript 2009 or 5)
+so the jsx code we use can be converted to es5 using babel lets see!-->
+<!--INSER THE BOILER PLATE CODE-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--React Library-->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!--React DOM Library-->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!--Babel Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>Let's React!</title>
+</head>
+<body>
+    <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT-->
+    <div id="app">React has not rendered yet</div>
+    <div id="multiple_elements">React has not render multiple elements yet</div>
+    <!--JAVASCRIPT-->
+    <script type="text/babel">
+        // RENDER REACT TO THE DOM - WILL ACCEPT TWO ARGUMENTS (REACT WHAT, REACT WHERE)
+        ReactDOM.render(
+            //REACT WHAT-JSX in ES6
+            //<h1>Hello World</h1>
+            //REACT WHAT-JSX in ES5
+            React.createElement("h1",null,"Hello World"),
+            // REACT WHERE - DIV WITH ID OF "APP"
+            document.getElementById("app")
+        );
+        ReactDOM.render(
+            //REACT WHAT-JSX in ES6
+            //<div><h1>Hello World</h1>
+            //    <h2>How are you doing?</h2></div>,
+            //REACT WHAT-JSX in ES5
+             React.createElement(
+                 "div",
+                 null,
+                 React.createElement(
+                     "h1",
+                     null,
+                     "Hello World!!"
+                 ),
+                 React.createElement(
+                     "h2",
+                     null,
+                     "How are you doing?"
+                 )
+                 ),
+            // REACT WHERE - DIV WITH ID OF "APP"
+            document.getElementById("multiple_elements")
+        );
+    </script>
+    </body>

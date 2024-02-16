@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--React Library-->
+     <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+     <!--React DOM Library-->
+     <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+     <!--Babel Library-->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+     
+     <title>ColorSpectrum Refactor using Props and Map method</title>
+</head>
+<body>
+    <h1>ColorSpectrum Refactor using Props and Map method</h1>
+    
+    <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT -->
+    <div id="app">React has not rendered yet</div>
+    
+    <!-- JAVASCRIPT -->
+    <script type="text/babel">
+     
+        
+        var ColorSpectrum=function(props){
+            var colorItems=props.colors.map(function(item){
+                var colorSpectrumStyle={
+                    height:50,
+                    width:150,
+                    marginBottom:20,
+                    backgroundColor:item.color
+                };
+                return (<div style={colorSpectrumStyle} key={item.id}>{item.name}</div>);
+            });
+            return(
+               <h1>{colorItems}</h1> 
+            );
+        }
+        var colors=[{id:1,name:"Red",color:"red"},
+        {id:2,name:"Orange",color:"orange"},
+        {id:3,name:"Yellow",color:"yellow"},
+        {id:4,name:"Green",color:"green"},
+        {id:5,name:"Blue",color:"blue"},
+        {id:6,name:"Indigo",color:"indigo"},
+        {id:7,name:"Violet",color:"violet"}]
+
+        ReactDOM.render(
+            <div>
+                <ColorSpectrum colors={colors}/>
+            </div>,
+            document.getElementById("app")
+        );
+    </script>
+</body>
+</html>

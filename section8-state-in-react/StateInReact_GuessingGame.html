@@ -1,0 +1,184 @@
+<!--INSER THE BOILER PLATE CODE-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--React Library-->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!--React DOM Library-->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!--Babel Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>Guessing Game Using State in React</title>
+</head>
+<body>
+    <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT-->
+    <h1>Guessing Game Using State in React</h1>
+    <p>When we use state we cann't use Stateless Functional Components because they are stateless.
+        <br>So, for working on this keyword and state we use class Components.
+    </p>
+    <pre><code>
+        <span style="color:blue;">&lt;!-- Class Component --&gt;</span>
+
+        class GuessAge extends React.Component{
+
+            <span style="color:blue;">&lt;!-- constructor method-> which is a special function for ES6 classes
+            and JavaScript. Whenever an object is created via a class in JavaScript,
+            JavaScript invokes the constructor function. React, will invoke the constructor
+            with the props and context of the component. --&gt;</span>
+
+            constructor(props){
+
+                <span style="color:blue;">&lt;!-- super() invokes the constructor function defined by React.Component,
+                which executes some necessary setup code for our component. It's important to call super
+                whenever we define a constructor function.
+                
+                If you would like to set a property or access this inside the constructor,
+                you will need to call super().
+                
+                If a component doesn't use props or context, it's okay to not pass those along.--&gt;</span>
+
+                super(props);
+
+                <span style="color:blue;">&lt;!-- Setting the initial state of age --&gt;</span>
+
+                this.state={age:"Guess My Age"};
+
+                <span style="color:blue;">&lt;!-- When making React components, we come across this problem pretty much every time we make a component
+                with some kind of user interaction. This is a little tricky with ES6 Classes.
+                
+                Lets see whats going on inside the render() method the this keyword is bound to the component
+                no extra work is needed.
+
+                The this keyword has the context of the component GuessAge giving you access to its methods.
+                
+                However, things are different inside of the constructor method with ES6 Classes.
+                Properties of the class do not automatically bind to the React class instance.
+                Any time we define our own custom component methods for an ES6 class component, 
+                we have to manually bind this to the component ourselves. 
+                
+                The functions bind method allows you to specify what the this variable inside a function body should be set to.
+                What we are doing here is a common JavaScript pattern.
+                
+                We are redefining the component methods on button click setting it to the same function,
+                but bound to this the component.
+                
+                Now whenever on button click executes, this will reference the component as opposed to null.
+                So in this scenario we just bind methods by hand in the constructor.
+                --&gt;</span>
+
+                this.handleButtonClick=this.handleButtonClick.bind(this); <span style="color:blue;">// remove this line for Approach II and III</span>
+
+            }
+
+            <span style="color:blue;">&lt;!-- create a handleButtonClick method that passed on onClick Event handler --&gt;</span>
+
+            handleButtonClick(){
+
+                <span style="color:blue;">&lt;!--  This syntax setState is a keyword in the React API, so we will need to use
+                that exact syntax. We will then pass to it a JavaScript object and once again we will
+                put in our age property that we are going to set to a new state of the string of 37. --&gt;</span>
+
+                this.setState({
+                    age:"37"
+                });
+            }
+
+            render(){
+                return(
+                    &lt;div&gt;
+                        &lt;h1&gt;Guessing Game&lt;/h1&gt;
+                        &lt;h2&gt;{this.state.age}&lt;/h2&gt;
+
+                        <span style="color:blue;">&lt;!-- Approach I --&gt;
+
+                        &lt;!-- Button that has a Event OnClick to change the state of age in h2 tag  --&gt;</span>
+
+                        &lt;button onClick={this.handleButtonClick}>reveal my age&lt;/button&gt;
+
+                        <span style="color:blue;">&lt;!-- Approach II 
+                            
+                            after using bind method and passing this keyword. And Because of this keyword in our render method already
+                            has the context of the component.Now give our function the desired context with this keyword
+                            passes to the bind method. so we acheived what we want at here. by doing so.--&gt;
+
+                            &lt;!-- Button that has a Event OnClick to change the state of age in h2 tag  --&gt;</span>
+                            
+                            &lt;button onClick={this.handleButtonClick.bind(this)}>reveal my age&lt;/button&gt;
+                    &lt;/div&gt;);
+
+                    <span style="color:blue;">&lt;!-- Approach III  use Fat Arrow Function--&gt;
+
+                        &lt;!-- Fat Arrow Function: it preserve the this context when they are called.
+
+                        We are in the render method, so we have access to the context we are looking for already.--&gt;
+
+                        &lt;!-- Button that has a Event OnClick to change the state of age in h2 tag  --&gt;</span>
+                        
+                        &lt;button onClick={()=>this.handleButtonClick()}>reveal my age&lt;/button&gt;
+                &lt;/div&gt;);
+            }
+        }
+        ReactDOM.render(
+            //REACT WHAT-JSX
+            &lt;GuessAge/&gt;,
+            // REACT WHERE - DIV WITH ID OF "APP"
+            document.getElementById("app")
+        );
+    </code></pre>
+    <div id="app">React has not rendered yet</div>
+    <!--JAVASCRIPT-->
+    <script type="text/babel">
+        // RENDER REACT TO THE DOM - WILL ACCEPT TWO ARGUMENTS (REACT WHAT, REACT WHERE)
+        class GuessAge extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={age:"Guess My Age"};
+                //Approach I
+                //this.handleButtonClick=this.handleButtonClick.bind(this);
+            }
+            handleButtonClick(){
+                this.setState({
+                    age:"37"
+                });
+            }
+            //Approach I
+            // render(){
+            //     return(
+            //         <div>
+            //             <h1>Guessing Game</h1>
+            //             <h2>{this.state.age}</h2>
+            //             <button onClick={this.handleButtonClick}>reveal my age</button>
+            //         </div>);
+            // }
+            //Approach II
+            // render(){
+            //     return(
+            //         <div>
+            //             <h1>Guessing Game</h1>
+            //             <h2>{this.state.age}</h2>
+            //             <button onClick={this.handleButtonClick.bind(this)}>reveal my age</button>
+            //         </div>);
+            // }
+            //Approach III
+            render(){
+                return(
+                    <div>
+                        <h1>Guessing Game</h1>
+                        <h2>{this.state.age}</h2>
+                        <button onClick={()=>this.handleButtonClick()}>reveal my age</button>
+                    </div>);
+            }
+        }
+        ReactDOM.render(
+            //REACT WHAT-JSX
+            <GuessAge/>,
+            // REACT WHERE - DIV WITH ID OF "APP"
+            document.getElementById("app")
+        );
+            
+    </script>
+</body>
+</html>

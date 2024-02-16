@@ -1,0 +1,103 @@
+<!--INSER THE BOILER PLATE CODE-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--React Library-->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!--React DOM Library-->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!--Babel Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>Useless Note Taker React Events</title>
+</head>
+<body>
+    <h1>React Events</h1>
+    <p>"Handling events with React elements is very similar to handling events on DOM
+        elements. There are some syntactic differences:<br>
+        - React events are named using camelCase, rather than lowercase.<br>
+        - With JSX you pass a function as the event handler, rather than a string."
+    </p>
+    <p> Event Handler: function that should run whenever an event occurs</p>
+    <p>Naming Convention:
+        <br> 1. Begin with "on" or "handle"
+        <br> 2. Name the DOM element
+        <br> 3. Describe the expected action
+        <br> example: <pre><code>
+        class Note extends React.Component
+        {
+            handleButtonEdit(){
+                alert("this function will edit a note");
+            }
+            render(){
+                return (
+                    &lt;div&gt;
+                        &lt;h1&gt;Useless Note Taker&lt;/h1&gt;
+                        &lt;button onClick={this.handleButtonEdit}&gt; edit note &lt;/button&gt;
+                    &lt;/div&gt;);
+            }
+        }
+            </code></pre>
+        <br> here "handle" is the event name begins with
+        <br> "Button" name of the DOM element 
+        <br> "Edit" is the expection action
+    </p>
+    <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT-->
+    <div id="app">React has not rendered yet</div>
+   <h1> React Events Challenge- 
+       <br>Create a Life Warning that has two buttons Touch Stove and Drink Slurpee Really Fast with events to both button onMouseOver</h1>
+       <div id="app2">React has not rendered yet</div>
+    <!--JAVASCRIPT-->
+    <script type="text/babel">
+        //create Note Component
+        class Note extends React.Component
+        {
+            handleButtonEdit(){
+                alert("this function will edit a note");
+            }
+            handleButtonDelete(){
+                alert("this function will delete a note");
+            }
+            render(){
+                return (<div>
+                    <h1>Useless Note Taker</h1>
+                    <button onClick={this.handleButtonEdit}>edit note</button>
+                    <button onClick={this.handleButtonDelete}>delete note</button>
+                </div>);
+            }
+        }
+        // RENDER REACT TO THE DOM - WILL ACCEPT TWO ARGUMENTS (REACT WHAT, REACT WHERE)
+        ReactDOM.render(
+            //REACT WHAT-JSX
+            <Note/>,
+            // REACT WHERE - DIV WITH ID OF "APP"
+            document.getElementById("app")
+        );
+        //create Warning Component
+        class Warning extends React.Component{
+            handleButtonStove(){
+                alert("Ouch, that is hot!!");
+            }
+            handleButtonSlurpee(){
+                alert("Brain freeze!!");
+            }
+            render(){
+                return(
+                <div>
+                    <h1>Life Warnings</h1>
+                    <button onMouseOver={this.handleButtonStove}>Touch Stove</button>
+                    <button onMouseOver={this.handleButtonSlurpee}>Drink Slurpee Really Fast</button>
+                </div>
+                );
+            }
+        }
+        ReactDOM.render(
+            <Warning/>,
+            document.getElementById("app2")
+        );
+        
+    </script>
+</body>
+</html>

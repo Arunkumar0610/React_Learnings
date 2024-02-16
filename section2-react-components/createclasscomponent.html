@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--React Library-->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!--React DOM Library-->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!--Babel Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script> 
+   
+    <title>React Class Component</title>
+</head>
+<body>
+    <p><b>Class Components: </b>Javascript classes introduced in ECMAScript 2015(ES6)
+    are primarily syntactical sugar over Javascript's existing prototype-based inheritance
+The class syntax is not introducing a new object-oriented inheritance model to JavaScript.
+JavaScript classes provide a much simpler and clearer syntax to create objects and deal with inheritance.</p>
+<p> If using Functional Stateless Components is Best Practice Then why Class Components?
+    <br> Rule1: If we want to use this keyword we need to use Class Components.
+    <br> Rule2: If we want to use the Lifecycle Methods then we need to use Class Components.
+</p>
+<p><b> Lets get start with basic structure to create Class Component.</b></p>
+
+<div id="app">React has not rendered yet</div>
+
+<p>Challenge: CREATE A CLASS COMPONENTS FOR CIRCLE, SQUARE AND RECTANGLE 
+    <br>RENDER TO THE DOM WITH IN A PARENT DIV TAG
+</p>
+<div id="challenge">React has not rendered yet</div>
+<script type="text/babel">
+    //CREATE OUR FIRST CLASS COMPONENT
+    class Shapes extends React.Component{
+        render(){
+            return(
+                <h1>Circle, Square, Rectangle</h1>
+            );
+        }
+    }
+    ReactDOM.render(
+        <Shapes/>,
+        document.getElementById("app")
+    );
+    
+//Challenge: CREATE A CLASS COMPONENTS FOR CIRCLE, SQUARE AND RECTANGLE 
+    //RENDER TO THE DOM WITH IN A PARENT DIV TAG
+    class Circle extends React.Component{
+        render(){
+            return(
+                <h1>Circle</h1>
+            );
+        }
+    }
+    class Square extends React.Component{
+        render(){
+            return(
+                <h1>Square</h1>
+            );
+        }
+    }
+    class Rectangle extends React.Component{
+        render(){
+            return(
+                <h1>Rectangle</h1>
+            );
+        }
+    }
+    ReactDOM.render(
+        <div>
+            <Circle/>
+            <Square/>
+            <Rectangle/>
+        </div>,
+        document.getElementById("challenge")
+    );
+</script>
+</body>
+</html>

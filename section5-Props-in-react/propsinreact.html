@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--React Library-->
+     <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+     <!--React DOM Library-->
+     <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+     <!--Babel Library-->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+     
+     <title>Props in react</title>
+</head>
+<body>
+    <h1>Props In React</h1>
+    <p>Components let you split the UI into independent, resuasable peices, and think about each piece in isolation. Conceptually,
+        components are like JavaScript functions. They accept arbitrary inputs (called "props") and 
+        return React elements describing what should appear on the screen
+    </p>
+    <p>
+        => props simply means short hand for properties <br>
+        => Props- How components talk to each other <br>
+        => Props- are a way of passing data from parent to child. <br>
+        => Props- Flow downward (unidirectional) <br>
+        <b>Note: remember that react is said to have unidirectional data flow.</b><br>
+        => Props- Immutable data (read only)
+    </p>
+    <h1>Props Part I - Stateless Functional Components</h1>
+    <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT -->
+    <div id="app">React has not rendered yet</div>
+    <h1>Props Part II - Class Components</h1>
+    <div id="app1">React has not rendered yet</div>
+    <h1>Props Part III - Color Spectrum Refactor</h1>
+    <div id="app2">React has not rendered yet</div>
+    <!-- JAVASCRIPT -->
+    <script type="text/babel">
+        //Part I
+        var Person=function(props){
+            return(
+                <h1>Hi, {props.name}</h1>
+            );
+        }
+        //var props={
+        //    name:"Arun"
+        //}
+        ReactDOM.render(
+            <div>
+                <Person name="Arun"/>
+                <Person name="Sarah"/>
+                <Person name="Jill"/>
+                <Person name="Bill"/>
+            </div>,
+            document.getElementById("app")
+        )
+        //Part II
+        class PersonGreeting extends React.Component{
+            render(){
+                var personStyle={
+                    height:300,
+                    width:300,
+                    backgroundColor:this.props.color
+                }
+                return(
+                    <div style={personStyle}>Hello, {this.props.name}</div>
+                );
+            }
+        }
+        ReactDOM.render(
+            <div>
+                <PersonGreeting color="tomato" name="Arun"/>
+                <PersonGreeting color="blue" name="Sarah"/>
+                <PersonGreeting color="green" name="Jill"/>
+                <PersonGreeting color="violet" name="Bill"/>
+            </div>,
+            document.getElementById("app1")
+        )
+        //Part III
+        var ColorSpectrum=function(props){
+            var colorSpectrumStyle={
+                height:50,
+                width:150,
+                backgroundColor:props.color
+            }
+            return(
+                <h1 style={colorSpectrumStyle}>{props.name}</h1>
+            );
+        }
+        ReactDOM.render(
+            <div>
+                <ColorSpectrum color="red" name="Red"/>
+                <ColorSpectrum color="orange" name="Orange"/>
+                <ColorSpectrum color="yellow" name="Yellow"/>
+                <ColorSpectrum color="green" name="Green"/>
+                <ColorSpectrum color="blue" name="Blue"/>
+                <ColorSpectrum color="indigo" name="Indigo"/>
+                <ColorSpectrum color="violet" name="Violet"/>
+            </div>,
+            document.getElementById("app2")
+        );
+    </script>
+</body>
+</html>

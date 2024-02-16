@@ -1,0 +1,115 @@
+<!--INSER THE BOILER PLATE CODE-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--React Library-->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!--React DOM Library-->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!--Babel Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>React Ajax Requests</title>
+</head>
+<body>
+    <h1>React Ajax Requests</h1>
+    <p><b>AJAX stands for AsynchronousJavaScriptAndXML.</b> In a nutshell, it is the use of the
+         XMLHttpRequest object to communicate with servers. It can send and recieve information in 
+        various formats, including JSON, XML, HTML and textfiles. AJAX's most appealing characteristic
+        is its "asynchronous" nature, which means it can communicate with server, exchange data, and update
+        the page without having to refresh the page.</p>
+        <p>
+            The two major features of AJAX allow you to do the following:
+            <ul>
+                <li>Make requests to the server without reloading the page</li>
+                <li>Recieve and work with data from the server</li>
+            </ul>
+        </p>
+        <p>
+            <b>What is an API?</b><br>
+            An Application Program Interface(API) is a set of routines,protocols, and tools
+            for building software applications. Basically, an API specifies how software components should interact
+        </p>
+        <p><b>Fetch method:</b> the fetch() method takes on mandatory argument, the path to the 
+        resource you want to fetch. It returns a promise that resolves to the Response to that request, 
+    whether it is sucessful or not.</p>
+    <p><b>What is JavaScript Promise?</b><br>
+        The Promise object represents the eventual completion(or failure) of an asynchronous operation,
+        and its resulting value.
+    </p>
+
+   <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT-->
+    <div id="app">React has not rendered yet</div>
+   
+    <!--JAVASCRIPT-->
+    <script type="text/babel">
+
+        class App extends React.Component{
+            constructor(props){
+                super(props);
+                this.state={
+                    items:[]
+                };
+            }
+            //componentDidMount - React lifecycle method
+            //most common use case: starting AJAX calls to load data for your component
+            //can call setState
+            componentDidMount(){
+                fetch("https://swapi.dev/api/people")
+                .then(response=>response.json())
+                .then(responseData=>{
+                    this.setState({
+                        items:responseData.results
+                    });
+                })
+                .catch(error=>{
+                    console.log('Fetching and parsing data error',error);
+                })
+            }
+            render(){
+                let items=this.state.items;
+                console.log(items);
+                var cardStyle={
+                    display:"inline-block",
+                    margin:20,
+                    height:500,
+                    width:350,
+                    textAlign:"center",
+                    boxShadow:"0px 0px 5px #555"
+                }
+                return(
+                <div >
+                    <h1> StarWar Characters </h1>
+                    {items.map(item=>
+                    {
+                        return (<div style={cardStyle} key={item.name}>
+                            <h4 >Name: {item.name}</h4>
+                            <h4 >Eye Color: {item.eye_color} </h4>
+                            <h4 >Height: {item.height}</h4>
+                            <h4 >Weight: {item.mass}</h4>
+                            <h4 >Hair Color: {item.hair_color}</h4>
+                            <h4 >Skin Color: {item.skin_color}</h4>
+                            <h4 >gender: {item.gender}</h4>
+                            <h4 >Birth Year: {item.birth_year}</h4>
+                            <h4 >Created On: {item.created}</h4>
+                            <h4>Edited On: {item.edited}</h4>
+
+                            </div>);
+                    })}
+                    </div>
+                );
+            }
+        }
+        // RENDER REACT TO THE DOM - WILL ACCEPT TWO ARGUMENTS (REACT WHAT, REACT WHERE)
+        ReactDOM.render(
+            //REACT WHAT-JSX
+            <App/>,
+            // REACT WHERE - DIV WITH ID OF "APP"
+            document.getElementById("app")
+        );
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!--INSER THE BOILER PLATE CODE-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--React Library-->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!--React DOM Library-->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!--Babel Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>Let's React!</title>
+</head>
+<body>
+    <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT-->
+    <div id="app">React has not rendered yet</div>
+    <p><b>challenge-1</b>: RENDER A PARAGRAPH TAG WITH THE CONTENT "I AM A PARAGRAPH!</p>
+    <div id="challenge1">React has not rendered yet</div>
+    <p><b>challenge-2</b>: RENDER AN ANCHOR TAG THAT LINKS TO GOOGLE WITH THE CONTENT "VISIT GOOGLE"</p>
+    <div id="challenge2">React has not rendered yet</div>
+    <p><b>challenge-3</b>: RENDER AN UNORDERED LIST WITH THREE LIST ITEMS YOU NEED TO DO TODAY</p>
+    <div id="challenge3">React has not rendered yet</div>
+    <!--JAVASCRIPT-->
+    <script type="text/babel">
+        // RENDER REACT TO THE DOM - WILL ACCEPT TWO ARGUMENTS (REACT WHAT, REACT WHERE)
+        ReactDOM.render(
+            //REACT WHAT-JSX
+            <h1>Hello World</h1>,
+            // REACT WHERE - DIV WITH ID OF "APP"
+            document.getElementById("app")
+        );
+        //ASSIGNMENT-CHALLENGE
+            //RENDER A PARAGRAPH TAG WITH THE CONTENT "I AM A PARAGRAPH!"
+            ReactDOM.render(
+                //REACT WHAT-JSX
+                <p>I AM A PARAGRAPH</p>,
+                // REACT WHERE - DIV WITH ID OF "APP"
+                document.getElementById("challenge1")
+            );
+            //RENDER AN ANCHOR TAG THAT LINKS TO GOOGLE WITH THE CONTENT "VISIT GOOGLE"
+            ReactDOM.render(
+                //REACT WHAT-JSX
+                <a href="https://www.google.com">VISIT GOOGLE</a>,
+                //REACT WHERE - DIV WITH ID OF "APP"
+                document.getElementById("challenge2")
+            );
+            //RENDER AN UNORDERED LIST WITH THREE LIST ITEMS YOU NEED TO DO TODAY
+            ReactDOM.render(
+                //REACT WHAT-JSX
+                <ul>
+                    <li>Read a book for 1 hour</li>
+                    <li>Reduce the screen time</li>
+                    <li>Complete your daily tasks</li>
+                </ul>,
+                //REACT WHERE - DIV WITH ID OF "APP"
+                document.getElementById("challenge3")
+            );
+    </script>
+</body>
+</html>

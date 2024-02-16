@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--React Library-->
+     <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+     <!--React DOM Library-->
+     <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+     <!--Babel Library-->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+     
+     <title>Props Challenges</title>
+</head>
+<body>
+    
+    <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT -->
+    <h1>Challenge 1- RENDER YOUR NAME AND AGE AND SOCIAL MEDIA PROFILE PIC TO THE DOM STATELESS FUNCTIONAL COMPONENT </h1>
+    <div id="app">React has not rendered yet</div>
+
+    <h1>Challenge 2- RENDER YOUR NAME AND AGE AND SOCIAL MEDIA PROFILE PIC TO THE DOM CLASS COMPONENT </h1>
+    <div id="app1">React has not rendered yet</div>
+
+    <h1>Challenge 3- PASS PROPS FROM PARENT FULLNAME COMPONENT TO CHILDREN COMPONENTS - FIRSTNAME, PROFILE AND LASTNAME IN CLASS COMPONENT</h1>
+    <div id="app2">React has not rendered yet</div>
+    <h1>Challenge 4- PASS PROPS FROM PARENT FULLNAME COMPONENT TO CHILDREN COMPONENTS - FIRSTNAME, PROFILE AND LASTNAME IN STATELESS FUNCTIONAL COMPONENT</h1>
+    <div id="app3">React has not rendered yet</div>
+    <h1>Challenge 5- PASS PROPS FROM PARENT TO CHILDREN COMPONENTS USING A JAVASCRIPT OBJECT</h1>
+    <div id="app4">React has not rendered yet</div>
+    <!-- JAVASCRIPT -->
+    <script type="text/babel">
+        //Challenge I
+            // RENDER YOUR NAME AND AGE AND SOCIAL MEDIA PROFILE PIC TO THE DOM 
+
+        var PropExample = function(props) {
+        return(
+            <div>
+            <p>Hi, {props.name}</p>
+            <p>My age is: {props.age}</p>
+            <img src={props.img}/>
+            </div>
+        );
+        } 
+
+        ReactDOM.render(
+        <PropExample name="Arun" age="24"
+            img="../CapstoneProject1/profile.jpg"
+            />,
+        document.getElementById("app")
+        );
+        //Challenge II
+        // RENDER YOUR NAME AND AGE AND SOCIAL MEDIA PROFILE PIC TO THE DOM
+
+        class PropExample1 extends React.Component {
+        render() {
+            return(
+            <div>
+                <p>Hi, {this.props.name}</p>
+                <p>My age is: {this.props.age}</p>
+                <img src={this.props.img}/>
+            </div>
+            );
+        }
+        }
+
+        ReactDOM.render(
+        <PropExample1 name="Arun" age="24" img="../CapstoneProject1/profile.jpg"/>,
+        document.getElementById("app1")
+        );
+        //Challenge III
+        // PASS PROPS FROM PARENT FULLNAME COMPONENT TO CHILDREN COMPONENTS - FIRSTNAME, PROFILE AND LASTNAME
+
+        class FirstName extends React.Component {
+        render() {
+            return(
+            <h1>{this.props.firstname}</h1>
+            );
+        }
+        }
+
+        class Profile extends React.Component {
+        render() {
+            return(
+            <img src={this.props.img}/>
+            );
+        }
+        }
+
+        class LastName extends React.Component {
+        render() {
+            return(
+            <h1>{this.props.lastname}</h1>
+            );
+            }
+        }
+
+        class FullName extends React.Component {
+        render() {
+            return(
+            <div>
+                <FirstName firstname={this.props.firstname}/>
+                <LastName lastname={this.props.lastname}/>
+                <Profile img={this.props.img}/>
+            </div>
+            );
+        }
+        }
+        
+        ReactDOM.render(
+        <FullName 
+            firstname="Rob"
+            lastname="Merrill"
+            img="../CapstoneProject1/profile.jpg"
+            />,
+        document.getElementById("app2")
+        );
+        //Challenge-IV
+       // PASS PROPS FROM PARENT TO CHILDREN COMPONENTS
+
+        var FirstName1 = function(props) {
+        return(
+            <h1>{props.firstname}</h1>
+        );
+        }
+
+        var Profile1 = function(props) {
+        return(
+            <img src={props.img}/>
+        );
+        }
+
+        var LastName1 = function(props) {
+        return(
+            <h1>{props.lastname}</h1>
+        );
+        }
+
+        var FullName1 = function(props) {
+        return(
+            <div> 
+            <FirstName1 firstname={props.firstname}/>
+            <LastName1 lastname={props.lastname}/>
+            <Profile1 img={props.img}/>
+            </div>
+        );
+        }
+                
+        ReactDOM.render(
+        <FullName1 
+            firstname="Rob"
+            lastname="Merrill"
+            img="../CapstoneProject1/profile.jpg"
+            />,
+        document.getElementById("app3")
+        );
+        //Challenge V
+        // PASS PROPS FROM PARENT TO CHILDREN COMPONENTS using a javascript object
+
+        class FirstName2 extends React.Component {
+        render() {
+            return(
+            <h1>{this.props.firstname}</h1>
+            );
+        }
+        }
+
+        class Profile2 extends React.Component {
+        render() {
+            return(
+            <img src={this.props.img}/>
+            );
+        }
+        }
+
+        class LastName2 extends React.Component {
+        render() {
+            return(
+            <h1>{this.props.lastname}</h1>
+            );
+            }
+        }
+
+        class FullName2 extends React.Component {
+        render() {
+            return(
+            <div>
+                <FirstName2 firstname={this.props.user.firstname}/>
+                <LastName2 lastname={this.props.user.lastname}/>
+                <Profile2 img={this.props.user.img}/>
+            </div>
+            );
+        }
+        }
+
+        var person = {
+        firstname: "Rob",
+        lastname: "Merrill",
+        img: "../CapstoneProject1/profile.jpg"
+        }
+
+        ReactDOM.render(
+        <FullName2 user={person}/>,
+        document.getElementById("app4")
+        );
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--React Library-->
+     <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+     <!--React DOM Library-->
+     <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+     <!--Babel Library-->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script> 
+
+    <title>Styling With in React Component</title>
+</head>
+<body>
+    <h2>React Styling -Inline Approach</h2>
+    <p>Blurred (not following ) Seperation of Concerns to seperate HTML, CSS and Javascript as JSX not follows seperation of concerns.</p>
+    <p>Style With in the Component as we go and style our component in jsx file only</p>
+    <p> It makes easier to locate bugs and fix it.</p>
+    <p>Self Contained Component- which makes it easier to share the whole component with one jsx file.</p>
+
+    <h4> 2 Rules to style with in component</h4>
+    <p> rule1: Create JavaScript Object <br>
+        rule2: Assign Object to Attribute of Element to style<br>
+        <pre><code>var Red=function(){
+            var redStyle={
+                height:50,
+                width:150,
+                backgroundColor:"red"
+            }
+            return(&lt;h1 style={redStyle}&gt;Red&lt;/h1&gt;); //In JSX To Evaluate Expression Wrap in {} braces.
+        }
+ReactDOM.render(
+            //Render What,//Render Where
+            &lt;div&gt;&lt;Red/&gt;&lt;Orange/&gt;&lt;Yellow/&gt;
+            &lt;Green/&gt;&lt;Blue/&gt;&lt;Indigo/&gt;&lt;Violet/>&lt;/div&gt;,
+            document.getElementById("app")
+        )</code></pre>
+    </p>
+    <div id="app">React has not rendered yet</div> 
+    <script type="text/babel">
+        var Red=function(){
+            var redStyle={
+                height:50,
+                width:150,
+                backgroundColor:"red"
+            }
+            return(<h1 style={redStyle}>Red</h1>); //In JSX To Evaluate Expression Wrap in {} braces.
+        }
+        var Orange=function(){
+            var orangeStyle={
+                height:50,
+                width:150,
+                backgroundColor:"orange"
+            }
+            return(<h1 style={orangeStyle}>Orange</h1>);
+        }
+        var Yellow= function(){
+            var yellowStyle={
+                height:50,
+                width:150,
+                backgroundColor:"yellow"
+            }
+            return(<h1 style={yellowStyle}>Yellow</h1>);
+        }
+        var Green=function(){
+            var greenStyle={
+                height:50,
+                width:150,
+                backgroundColor:"green"
+            }
+            return(<h1 style={greenStyle}>Green</h1>);
+        }
+        var Blue=function(){
+            var blueStyle={
+                height:50,
+                width:150,
+                backgroundColor:"blue"
+            }
+            return(<h1 style={blueStyle}>Blue</h1>);
+        }
+        var Indigo=function(){
+            var indigoStyle={
+                height:50,
+                width:150,
+                backgroundColor:"indigo"
+            }
+            return(<h1 style={indigoStyle}>Indigo</h1>);
+        }
+        var Violet=function(){
+            var violetStyle={
+                height:50,
+                width:150,
+                backgroundColor:"violet"
+            }
+            return(<h1 style={violetStyle}>Violet</h1>);
+        }
+        ReactDOM.render(
+            //Render What,//Render Where
+            <div><Red/><Orange/><Yellow/>
+                <Green/><Blue/><Indigo/><Violet/></div>,
+            document.getElementById("app")
+        )
+    </script>
+</body>
+</html>
